@@ -1,0 +1,63 @@
+//{ Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+//User function template for C++
+
+class Solution{   
+public:
+    void segregate0and1(int arr[], int n) {
+	// This is the code contains main logic
+        // code here
+        int left = 0;
+        int right = n-1;
+        while (left < right)
+        {
+            while(arr[left] == 0 && left < right)
+            {
+                left++;
+            }
+             while(arr[right] == 1 && left < right)
+             {
+                 right --;
+             }
+             
+             // If both condition fails means we need to check the 
+             // arr[left] == 1 && and arr[right] == 0
+             // SO just swap them and make sure the condition must satisfy
+             // left < right
+             if(left<right)
+             {
+                 swap(arr[left] , arr[right]);
+                 left++;
+                 right--;
+             }
+        }
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        Solution ob;
+        ob.segregate0and1(arr, n);
+        for (int i = 0; i < n; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+    }
+    return 0;
+}
+// } Driver Code Ends
